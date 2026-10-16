@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VeritasLens — Evidence Analysis You Can Trust</title>
+<!-- Tailwind CSS v3 with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cormorant Garamond, Newsreader, Plus Jakarta Sans, Alex Brush / Playfair Display -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@400;450;500;600;700&amp;family=Alex+Brush&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: {
+              DEFAULT: '#FAF8F5',
+              ivory: '#FBF9F5',
+              subtle: '#F4F0E8',
+              border: '#E8E4DA',
+            },
+            veritas: {
+              green: '#1B3629',
+              greenHover: '#14291F',
+              forest: '#23382B',
+              amber: '#C5A059',
+              amberDark: '#9E7A33',
+              ink: '#1E2522',
+              muted: '#5B6660',
+              subtle: '#7E8B84',
+            }
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            script: ['"Alex Brush"', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="editorial-styling">
+    body {
+      background-color: #FAF8F5;
+      color: #1E2522;
+      -webkit-font-smoothing: antialiased;
+    }
+    .serif-display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: -0.015em;
+    }
+    .nav-item {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-item:hover {
+      color: #1B3629;
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans bg-canvas text-veritas-ink selection:bg-amber-100 selection:text-veritas-green">
+<!-- ======================================================== -->
+<!-- HERO WRAPPER WITH FULL-BLEED ARCHIVAL BACKGROUND IMAGE   -->
+<!-- ======================================================== -->
+<div class="relative w-full overflow-hidden bg-canvas-ivory">
+<!-- Atmospheric Archive Photography Background with Seamless Editorial Gradient -->
+<div class="absolute inset-0 z-0 pointer-events-none">
+<img alt="Archival library interior" class="w-full h-[820px] md:h-[900px] object-cover object-center filter blur-[1.5px] scale-[1.03] opacity-55" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkxqT9T0Uxy1Bh8_tBcm6YJ2NtNhdu0E3xs5rryN-f2QQA1nhPY6wAlv2hmpVnNdVTqFhiBzu8BmZRXeTuhwmWqMAuR1NAqS1PZBmaUhCrxOaNH-s6KPlqLYEeL2oijTBO2ZDEaKK0lXdmCKe7ApdAhn8Z_RA8Al1JWUxG_8IFCpi1j1F6uX4hnK6bm_UJQTJrluZevxgZ4uDe3poQcnao2kf7wtP-H1ZZ3c8UPMIy6ury9GjzsJWt"/>
+<!-- Soft ivory & warm ambient gradients mimicking reference photo aesthetic -->
+<div class="absolute inset-0 bg-gradient-to-r from-canvas-ivory/95 via-canvas-ivory/75 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-canvas-ivory/70 via-transparent to-canvas-ivory"></div>
+<div class="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-canvas via-canvas/90 to-transparent"></div>
+</div>
+<!-- Relative Content Container -->
+<div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col justify-between min-h-[750px] md:min-h-[860px]">
+<!-- Top Navigation Bar (closely matching Sterling & Co.) -->
+<header class="pt-7 sm:pt-9 flex items-center justify-between" data-purpose="navigation-bar">
+<!-- Brand Logo (Left) -->
+<a aria-label="VeritasLens Homepage" class="group flex items-center space-x-1.5 focus:outline-none" href="#home">
+<span class="serif-display text-2xl sm:text-[27px] font-semibold text-veritas-ink tracking-tight">
+            Veritas<span class="font-normal text-veritas-green italic">&amp;</span>Lens
+          </span>
+</a>
+<!-- Navigation Links (Center) -->
+<nav aria-label="Primary Navigation" class="hidden md:flex items-center space-x-8 lg:space-x-10 text-[13px] font-medium text-veritas-muted tracking-normal">
+<a class="nav-item text-veritas-ink" href="#about">About</a>
+<a class="nav-item" href="#methodology">Methodology</a>
+<a class="nav-item" href="#ledger">Evidence Ledger</a>
+<a class="nav-item" href="#audits">Audits</a>
+<a class="nav-item" href="#contact">Contact</a>
+</nav>
+<!-- Right CTA Button -->
+<div class="flex items-center">
+<a class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs sm:text-[13px] font-medium text-white bg-veritas-green hover:bg-veritas-greenHover shadow-sm transition-all duration-200" href="#verify">
+            Submit Claim
+          </a>
+</div>
+</header>
+<!-- Hero Main Content (aligned to the left, replicating reference layout) -->
+<div class="py-16 md:py-24 max-w-2xl lg:max-w-3xl flex flex-col items-start justify-center" data-purpose="hero-left-content">
+<!-- Eyebrow Pill Badge -->
+<div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-amber-900/15 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.03)] mb-8">
+<span class="w-1.5 h-1.5 rounded-full bg-veritas-amber"></span>
+<span class="text-[11px] sm:text-[12px] font-medium text-veritas-ink/80 tracking-wide">
+            10+ Years Archival Record · Trusted by 400+ Newsrooms
+          </span>
+</div>
+<!-- Main Headline -->
+<h1 class="serif-display text-[48px] sm:text-[64px] md:text-[76px] lg:text-[84px] text-veritas-ink leading-[1.03] font-normal tracking-tight mb-7">
+          Evidence Analysis<br/>
+<span class="italic font-normal text-veritas-green">You Can Trust</span>
+</h1>
+<!-- Subtitle -->
+<p class="text-veritas-muted text-base sm:text-lg md:text-[17.5px] max-w-xl font-normal leading-relaxed mb-9">
+          Delivering open editorial fact-checking and structured primary record verification with precision, care, and transparency.
+        </p>
+<!-- Action Buttons Side-by-Side -->
+<div class="flex flex-wrap items-center gap-3.5 mb-14" data-purpose="hero-action-buttons">
+<!-- Primary Pill Button with Arrow -->
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-full text-[13.5px] font-medium text-white bg-veritas-green hover:bg-veritas-greenHover shadow-md transition-all duration-150 group" href="#verify">
+<span>Verify a Claim</span>
+<svg class="w-3.5 h-3.5 ml-2.5 transform transition-transform group-hover:translate-x-0.5 text-amber-200/90" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+<!-- Secondary Pill Button -->
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-full text-[13.5px] font-medium text-veritas-ink bg-white/70 hover:bg-white border border-veritas-ink/15 hover:border-veritas-ink/30 backdrop-blur-sm transition-all duration-150 shadow-sm" href="#archive">
+            Explore Archive
+          </a>
+</div>
+<!-- Stats Row directly underneath buttons -->
+<div class="pt-6 border-t border-veritas-ink/10 w-full max-w-md flex items-center justify-between text-left" data-purpose="hero-stats-row">
+<!-- Stat 1 -->
+<div class="pr-5">
+<div class="serif-display text-2xl sm:text-3xl font-medium text-veritas-ink tracking-tight">10+</div>
+<div class="text-[10px] sm:text-[10.5px] font-semibold text-veritas-subtle tracking-wider uppercase mt-0.5">Years Record</div>
+</div>
+<div class="h-8 w-px bg-veritas-ink/10"></div>
+<!-- Stat 2 -->
+<div class="px-5">
+<div class="serif-display text-2xl sm:text-3xl font-medium text-veritas-ink tracking-tight">400+</div>
+<div class="text-[10px] sm:text-[10.5px] font-semibold text-veritas-subtle tracking-wider uppercase mt-0.5">Partner Desks</div>
+</div>
+<div class="h-8 w-px bg-veritas-ink/10"></div>
+<!-- Stat 3 -->
+<div class="pl-5">
+<div class="serif-display text-2xl sm:text-3xl font-medium text-veritas-ink tracking-tight">12k+</div>
+<div class="text-[10px] sm:text-[10.5px] font-semibold text-veritas-subtle tracking-wider uppercase mt-0.5">Verified Claims</div>
+</div>
+</div>
+</div>
+<!-- Spacing Anchor -->
+<div class="pb-6"></div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- LOWER SECTION: ABOUT VERITASLENS SPLIT SECTION           -->
+<!-- Matching "About Sterling & Co." layout from reference     -->
+<!-- ======================================================== -->
+<section class="w-full bg-canvas py-20 sm:py-28 border-t border-canvas-border" data-purpose="about-split-section" id="about">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+<!-- Left Column: Section Title & Underline Accent -->
+<div class="lg:col-span-5 flex flex-col items-start">
+<span class="text-[11px] font-semibold tracking-[0.2em] uppercase text-veritas-amber mb-3">
+            About The Initiative
+          </span>
+<h2 class="serif-display text-4xl sm:text-5xl text-veritas-ink font-normal leading-tight">
+            About <span class="italic font-normal">VeritasLens</span>
+</h2>
+<!-- Delicate Gold/Amber Accent Line (like reference) -->
+<div class="w-14 h-[2px] bg-veritas-amber/60 mt-4 rounded-full"></div>
+</div>
+<!-- Right Column: Editorial Mission, Body, Quote & Signature -->
+<div class="lg:col-span-7 flex flex-col space-y-6 text-veritas-ink">
+<!-- Lead Paragraph with Bold Emphasis -->
+<p class="text-base sm:text-lg leading-relaxed text-veritas-ink/90 font-normal">
+            We believe news verification is not just about debunking falsehoods, but about equipping journalists and citizens with <strong class="font-semibold text-veritas-ink">clarity</strong> and <strong class="font-semibold text-veritas-ink">unimpeachable proof</strong>.
+          </p>
+<!-- Secondary Body Paragraph -->
+<p class="text-sm sm:text-[15px] leading-relaxed text-veritas-muted font-normal">
+            Our investigative team cross-examines contested claims against official gazettes, acoustic forensic models, and accredited wire archives — combining algorithmic rigor with transparent methodology that newsrooms rely upon worldwide.
+          </p>
+<!-- Divider -->
+<div class="w-full h-px bg-canvas-border my-2"></div>
+<!-- Italic Quote Block -->
+<blockquote class="serif-display text-xl sm:text-2xl text-veritas-ink italic font-normal leading-snug pt-2">
+            “Every contested claim deserves not just a verdict, but verifiable provenance.”
+          </blockquote>
+<!-- Signature Lockup -->
+<div class="pt-4 flex items-center space-x-4">
+<span class="serif-display text-2xl sm:text-3xl text-veritas-amber font-medium italic tracking-wide">
+              Elena Rostova
+            </span>
+<div class="h-4 w-px bg-canvas-border"></div>
+<span class="text-xs text-veritas-subtle uppercase tracking-wider font-medium">
+              Director of Archival Verification
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- MINIMAL EDITORIAL FOOTER                                 -->
+<!-- ======================================================== -->
+<footer class="w-full border-t border-canvas-border py-8 bg-canvas text-xs text-veritas-subtle" data-purpose="page-footer">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center space-x-3">
+<span class="font-semibold text-veritas-ink">VeritasLens Archival Initiative</span>
+<span>•</span>
+<span>Version 2.4.1 Editorial Release</span>
+</div>
+<div class="flex space-x-6 text-veritas-muted">
+<a class="hover:text-veritas-ink transition-colors" href="#ledger">Archival Ledger</a>
+<a class="hover:text-veritas-ink transition-colors" href="#standards">Editorial Standards</a>
+<a class="hover:text-veritas-ink transition-colors" href="#transparency">Transparency Protocol</a>
+</div>
+</div>
+</footer>
+</body></html>
