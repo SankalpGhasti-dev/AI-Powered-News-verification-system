@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7F5F0">
+  <meta name="description"
+    content="How VeritasLens works — An in-depth overview of our four-stage automated evidence-based news verification pipeline.">
+  <title>How It Works — VeritasLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <div class="header-brand">
+        <a class="brand-link" href="index.html" aria-label="VeritasLens Home">
+          <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <path d="m8 11 2 2 4-4"></path>
+          </svg>
+          <span class="brand-title">Veritas<strong>Lens</strong></span>
+        </a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-tagline">Open news verification and evidence-based fact-checking</span>
+      </div>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Main Navigation">
+        <a class="nav-anchor" href="index.html">Home</a>
+        <a class="nav-anchor" href="verify.html">Verify</a>
+        <a class="nav-anchor is-active" href="how-it-works.html" aria-current="page">How It Works</a>
+        <a class="nav-anchor" href="samples.html">Sample Cases</a>
+        <a class="nav-anchor" href="ledger.html">Ledger</a>
+        <a class="nav-anchor" href="methodology.html">Methodology</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <section class="page-header-block" aria-labelledby="page-title">
+      <div class="container container-narrow">
+        <h1 id="page-title" class="page-headline">How VeritasLens works</h1>
+        <p class="page-subhead">
+          A transparent, four-phase evidentiary pipeline designed to audit news articles and viral claims against live
+          news wires,
+          accredited fact-checking archives, and mathematical corroboration metrics.
+        </p>
+      </div>
+    </section>
+
+    
+    <section class="section-landing">
+      <div class="container container-narrow">
+        <div class="prose-block">
+          <h2>Phase 1: Input Ingestion &amp; HTML Article Extraction</h2>
+          <p>
+            Users can submit either a news article URL (HTTP/HTTPS) or paste statement text directly.
+            For URLs, the backend applies rigorous SSRF (Server-Side Request Forgery) protections—blocking private,
+            loopback, and cloud metadata IP ranges.
+          </p>
+          <p>
+            The backend fetches the raw web page with strict timeout controls and uses <strong>BeautifulSoup4</strong>
+            to strip away ads, headers, navigation chrome, and tracking scripts, isolating the core headline, author,
+            publication date, and body paragraphs.
+          </p>
+
+          <h2>Phase 2: Atomic Claim Decomposition via Google Gemini</h2>
+          <p>
+            Complex articles often interleave verifiable factual statements with subjective rhetoric and opinion.
+            VeritasLens passes the cleaned text to <strong>Google Gemini</strong> with strict structured schemas to
+            extract discrete, falsifiable <strong>atomic claims</strong>.
+          </p>
+          <p>
+            For example, if an article states:
+            <em>“The Central Bank confirmed a catastrophic 35% single-month spike in headline inflation following
+              emergency rate deliberations,”</em>
+            the engine extracts testable components:
+          </p>
+          <ul>
+            <li><strong>Claim 1:</strong> The Central Bank officially reported a 35% month-over-month inflation
+              increase.</li>
+            <li><strong>Claim 2:</strong> Emergency monetary policy meetings were held by monetary authorities.</li>
+          </ul>
+
+          <h2>Phase 3: Multi-Source Evidence Retrieval</h2>
+          <p>
+            Once atomic claims are identified, VeritasLens gathers independent empirical evidence through two
+            complementary external data sources:
+          </p>
+
+          <div class="steps-grid" style="margin: 24px 0;">
+            <div class="step-card">
+              <span class="step-number">E1</span>
+              <h3>GNews Wire API</h3>
+              <p>Searches accredited global news publishers and wire outlets for reporting that corroborates,
+                contextualizes, or refutes each atomic claim.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">E2</span>
+              <h3>Google Fact Check Tools API</h3>
+              <p>Queries existing verified fact-checks published by independent, audited news organizations indexed by
+                Google's ClaimReview database.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">E3</span>
+              <h3>Evidence Deduplication</h3>
+              <p>Retrieved records are cleaned, deduplicated, and organized by publisher, snippet, relevance, and
+                original safe URL references.</p>
+            </div>
+          </div>
+
+          <h2>Phase 4: Claim Verification, Credibility Scoring &amp; Synthesis</h2>
+          <p>
+            Retrieved evidence is evaluated against the atomic claims by Google Gemini under strict evidentiary
+            guidelines.
+            The engine assigns each claim one of four explicit verdicts:
+          </p>
+          <ul>
+            <li><strong>Supported:</strong> Substantive, reputable evidence independently confirms the core assertion.
+            </li>
+            <li><strong>Contradicted:</strong> Documented data, official records, or authoritative wire reports directly
+              disprove the assertion.</li>
+            <li><strong>Mixed:</strong> The assertion contains a kernel of truth blended with misleading, exaggerated,
+              or outdated context.</li>
+            <li><strong>Insufficient Evidence:</strong> No credible, authoritative corroboration was retrieved from news
+              wires or fact-check records.</li>
+          </ul>
+
+          <p>
+            Based on claim-level verdicts and evidence coverage, the engine calculates a transparent <strong>0–100
+              Credibility Score</strong>:
+          </p>
+          <p
+            style="background: var(--bg-surface-secondary); padding: 12px 16px; border-left: 3px solid var(--action-primary); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+            Score = 50.0 + (VerdictBalance &times; 45.0 &times; CoverageFactor)
+          </p>
+          <p>
+            Crucially, claims with <em>Insufficient Evidence</em> maintain a neutral baseline score of 50.0 rather than
+            dropping to 0, preventing unverified rumors from being falsely labelled as definitively disproven.
+          </p>
+
+          <h2>Transparent Limitations &amp; Reproducible Reports</h2>
+          <p>
+            Every verification report explicitly lists evidentiary limitations—including potential paywall restrictions,
+            lack of regional news coverage, or breaking news latency.
+            Users can copy summary briefs or download complete markdown reports for editorial documentation.
+          </p>
+        </div>
+
+        <div class="cta-box" style="margin-top: 48px;">
+          <h2>Ready to test the verification pipeline?</h2>
+          <p>Explore our curated demonstration cases or paste a contested headline in the live workspace.</p>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a class="btn btn-primary" href="verify.html">Open Verification Workspace</a>
+            <a class="btn btn-secondary" href="samples.html">Inspect Curated Cases</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-layout">
+        
+        <div class="footer-col-brand">
+          <a class="footer-brand-link" href="index.html" aria-label="VeritasLens Home">
+            <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <path d="m8 11 2 2 4-4"></path>
+            </svg>
+            <span class="brand-title">Veritas<strong>Lens</strong></span>
+          </a>
+          <p class="footer-mission">
+            An open, evidence-based news and claim verification system. Deconstructs input articles into atomic claims,
+            retrieves live evidence via GNews and Google Fact Check Tools API, and calculates transparent corroboration
+            scores.
+          </p>
+          <div class="footer-badge-wrap">
+            <span class="footer-pill">FastAPI Backend Pipeline</span>
+            <span class="footer-pill">Session Storage Only</span>
+          </div>
+        </div>
+
+        
+        <div class="footer-col-links">
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Platform</h4>
+            <nav class="footer-links-list" aria-label="Footer Platform Links">
+              <a href="index.html">Home</a>
+              <a href="verify.html">Verify Workspace</a>
+              <a href="samples.html">Sample Cases</a>
+              <a href="ledger.html">Session Ledger</a>
+            </nav>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Standards &amp; Process</h4>
+            <nav class="footer-links-list" aria-label="Footer Standards Links">
+              <a href="how-it-works.html">How It Works</a>
+              <a href="methodology.html">Methodology</a>
+              <a href="methodology.html#verdicts">Verification Verdicts</a>
+              <a href="methodology.html#limitations">Evidentiary Limitations</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 VeritasLens Project &middot; Evidence-based news verification.</p>
+        <p class="footer-compliance">Automated claim corroboration. Always cross-reference with official publications
+          and primary sources.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

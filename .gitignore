@@ -1,0 +1,35 @@
+# Secrets & environment configurations
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.secret
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Agent, scratch & temporary builds
+.agents/
+scratch/
+stitch_*/
+*.log
+*.tmp
+
+# Test & coverage artifacts
+.coverage
+htmlcov/

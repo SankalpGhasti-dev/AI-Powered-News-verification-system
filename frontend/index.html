@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7F5F0">
+  <meta name="description"
+    content="VeritasLens — AI-powered news and claim verification platform. Extract atomic claims, corroborate with GNews and Google Fact Check records, and compute evidence-based scores.">
+  <title>VeritasLens — Evidence-Based News Verification</title>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="style.css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+  
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  
+  <div id="page-loader" class="page-loader" aria-live="polite" aria-label="Loading VeritasLens">
+    <div class="loader-inner">
+      <div class="loader-emblem-wrap">
+        <div class="loader-emblem-3d">
+          <div class="emblem-facet">
+            <div class="emblem-facet-inner"></div>
+            <div class="emblem-facet-center"></div>
+          </div>
+        </div>
+      </div>
+      <div class="loader-brand">
+        <span class="loader-title">Veritas<strong>Lens</strong></span>
+        <span class="loader-motto">Evidence Analysis System</span>
+      </div>
+      <div class="loader-track">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <div class="header-brand">
+        <a class="brand-link" href="index.html" aria-label="VeritasLens Home">
+          <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <path d="m8 11 2 2 4-4"></path>
+          </svg>
+          <span class="brand-title">Veritas<strong>Lens</strong></span>
+        </a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-tagline">Open news verification and evidence-based fact-checking</span>
+      </div>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Main Navigation">
+        <a class="nav-anchor is-active" href="index.html" aria-current="page">Home</a>
+        <a class="nav-anchor" href="verify.html">Verify</a>
+        <a class="nav-anchor" href="how-it-works.html">How It Works</a>
+        <a class="nav-anchor" href="samples.html">Sample Cases</a>
+        <a class="nav-anchor" href="ledger.html">Ledger</a>
+        <a class="nav-anchor" href="methodology.html">Methodology</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <section class="hero-stitch" aria-labelledby="hero-heading">
+      
+      <div class="hero-stitch-bg" aria-hidden="true">
+        <img class="hero-stitch-img" id="hero-img" src="hero-library-bg.jpg"
+          alt="Archival research library with brass reading lamp" />
+        <div class="hero-stitch-gradient-h"></div>
+        <div class="hero-stitch-gradient-v"></div>
+        <div class="hero-stitch-gradient-bottom"></div>
+      </div>
+
+      
+      <div class="container hero-stitch-inner">
+        <div class="hero-stitch-main">
+          
+          <div class="hero-pill-badge" role="status">
+            <span class="hero-pill-dot" aria-hidden="true"></span>
+            <span>Automated Claim Extraction &middot; Multi-Source Wire Corroboration</span>
+          </div>
+
+          
+          <h1 id="hero-heading" class="hero-stitch-headline">
+            Evidence Analysis<br>
+            <span class="hero-stitch-italic">You Can Trust</span>
+          </h1>
+
+          
+          <p class="hero-stitch-subhead">
+            Deconstruct news stories into atomic claims with Google Gemini, cross-examine wire evidence via GNews and
+            Google Fact Check, and compute transparent credibility metrics.
+          </p>
+
+          
+          <div class="hero-stitch-actions">
+            <a class="btn-pill btn-pill-primary" href="verify.html">
+              <span>Verify a Claim</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a class="btn-pill btn-pill-secondary" href="ledger.html">
+              <span>Explore Ledger</span>
+            </a>
+          </div>
+
+          
+          <div class="hero-stitch-stats" role="region" aria-label="Platform Architecture Overview">
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">4</div>
+              <div class="hero-stat-label">Verification Verdicts</div>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">2 APIs</div>
+              <div class="hero-stat-label">GNews &amp; FactCheck</div>
+            </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">0–100</div>
+              <div class="hero-stat-label">Corroboration Score</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="hero-preview-section" aria-label="Featured Verification Dossier">
+      <div class="container container-narrow">
+        <div class="section-header-centered" style="margin-bottom: 24px;">
+          <span class="preview-item-label" style="color: var(--action-primary);">Featured Investigative Audit</span>
+          <h2 class="section-headline" style="font-size: 26px;">Active Claim Verification Dossier</h2>
+          <p class="section-desc">Inspect a complete evidentiary breakdown as rendered in our verification engine:</p>
+        </div>
+        <article class="preview-card" aria-label="Verification Dossier Interface Preview">
+          <div class="preview-topbar">
+            <span>CASE-2026-0618 &middot; ARCHIVAL AUDIT RECORD</span>
+            <span class="verdict-status-badge verdict-contradicted"
+              style="background: rgba(220, 38, 38, 0.1); color: #dc2626; border: 1px solid rgba(220, 38, 38, 0.25);">CONTRADICTED</span>
+          </div>
+          <div class="preview-body">
+            <blockquote class="preview-quote">
+              “Infographic alleging Central Bank confirmed 35% single-month headline inflation surge”
+            </blockquote>
+            <p class="summary-body">
+              Official monthly consumer price index published by the statistics bureau was 3.2% year-on-year.
+              Investigation revealed a cherry-picked wholesale spot gas sub-index presented falsely as aggregate
+              headline CPI.
+            </p>
+            <div class="preview-details-grid">
+              <div>
+                <span class="preview-item-label">Source Consensus &amp; Score</span>
+                <p class="preview-item-value">Score: 18/100 &middot; Contradicted by official statistical registers and
+                  4 accredited wire reports.</p>
+              </div>
+              <div>
+                <span class="preview-item-label">Documented Citations</span>
+                <p class="preview-item-value">National Statistics Bureau CPI Release (#CPI-2026-M5), Reuters Economic
+                  Wire (#RT-ECON-0442), AP Business Desk (#AP-8812).</p>
+              </div>
+            </div>
+          </div>
+          <div class="preview-footer">
+            <span class="criteria-label">Pipeline: BeautifulSoup4 + Gemini + GNews + FactCheck</span>
+            <a class="preview-cta" href="verify.html?case=inflation-metric">Open in verification workspace &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    
+    <section class="about-stitch-section" id="about" aria-labelledby="about-stitch-heading">
+      <div class="container">
+        <div class="about-stitch-grid">
+          
+          <div class="about-col-left">
+            <span class="about-eyebrow">About The Initiative</span>
+            <h2 id="about-stitch-heading" class="about-title">
+              About <em>VeritasLens</em>
+            </h2>
+            <div class="about-accent-bar" aria-hidden="true"></div>
+          </div>
+
+          
+          <div class="about-col-right">
+            <p class="about-lead-p">
+              We believe news verification is not just about debunking falsehoods, but about equipping journalists and
+              readers with <strong>structured evidence</strong> and <strong>verifiable sources</strong>.
+            </p>
+            <p class="about-body-p">
+              Our automated verification framework deconstructs complex news articles into atomic claims, cross-examines
+              them against live GNews wire dispatches and Google Fact Check archives, and calculates transparent
+              corroboration scores with documented limitations.
+            </p>
+            <div class="about-divider-line" aria-hidden="true"></div>
+            <blockquote class="about-quote">
+              &ldquo;Every contested claim deserves structured evidence and documented provenance, not arbitrary
+              authority.&rdquo;
+            </blockquote>
+            <div class="about-attribution">
+              <span class="about-attribution-name">VeritasLens Research Collective</span>
+              <div class="about-attribution-sep" aria-hidden="true"></div>
+              <span class="about-attribution-role">Open Investigation Framework</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section-landing" aria-labelledby="steps-heading">
+      <div class="container container-narrow">
+        <div class="section-header-centered">
+          <h2 id="steps-heading" class="section-headline">How VeritasLens verifies claims</h2>
+          <p class="section-desc">Our multi-stage verification pipeline separates emotional rhetoric from verifiable
+            facts.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-number">1</span>
+            <h3>Deconstruct into atomic claims</h3>
+            <p>Google Gemini decomposes complex news text into distinct, falsifiable propositions—stripping away
+              sensational framing and subjective adjectives.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-number">2</span>
+            <h3>Retrieve multi-source evidence</h3>
+            <p>Claims are matched against live news wire dispatches via GNews and public fact-checking records via
+              Google Fact Check Tools API.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-number">3</span>
+            <h3>Score &amp; synthesize transparently</h3>
+            <p>The system assigns one of four explicit verdicts, calculates a mathematical 0–100 credibility score, and
+              details evidentiary limitations.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 28px;">
+          <a class="preview-cta" href="how-it-works.html">Explore our complete verification pipeline &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section-landing" aria-labelledby="samples-preview-heading">
+      <div class="container container-narrow">
+        <div class="section-header-centered">
+          <h2 id="samples-preview-heading" class="section-headline">Curated investigative demonstrations</h2>
+          <p class="section-desc">Inspect how diverse claim categories are systematically evaluated against live
+            evidence:</p>
+        </div>
+        <div class="samples-list" role="list">
+          
+          <div class="sample-item" role="listitem">
+            <div class="sample-tag-row">
+              <span class="verdict-pill pill-red">Contradicted</span>
+              <span class="sample-category">Economics &middot; Metric Exaggeration</span>
+            </div>
+            <h3 class="sample-claim-text">Viral infographic claims Central Bank confirmed a 35% single-month headline
+              inflation surge</h3>
+            <p class="sample-context">Official statistical releases reported monthly CPI at 3.2% annualized;
+              cherry-picked wholesale spot gas sub-index presented falsely as headline inflation.</p>
+            <div class="sample-footer">
+              <span>Score: 18/100 &middot; 4 wire citations &middot; Case #2026-0618</span>
+              <a class="sample-cta" href="verify.html?case=inflation-metric">Inspect in workspace &rarr;</a>
+            </div>
+          </div>
+
+          
+          <div class="sample-item" role="listitem">
+            <div class="sample-tag-row">
+              <span class="verdict-pill pill-green">Supported</span>
+              <span class="sample-category">Health &amp; Medicine &middot; Regulatory Records</span>
+            </div>
+            <h3 class="sample-claim-text">European Medicines Agency authorizes next-generation antibiotic for critical
+              hospital care</h3>
+            <p class="sample-context">Verified through authoritative wire releases and agency regulatory register
+              filings citing positive Phase III clinical trial evaluations.</p>
+            <div class="sample-footer">
+              <span>Score: 92/100 &middot; 3 wire citations &middot; Case #2026-0744</span>
+              <a class="sample-cta" href="verify.html?case=antimicrobial-approval">Inspect in workspace &rarr;</a>
+            </div>
+          </div>
+
+          
+          <div class="sample-item" role="listitem">
+            <div class="sample-tag-row">
+              <span class="verdict-pill pill-amber">Mixed</span>
+              <span class="sample-category">Infrastructure &middot; Capital Funding</span>
+            </div>
+            <h3 class="sample-claim-text">Government fully cancels the high-speed rail line project due to budget
+              overruns</h3>
+            <p class="sample-context">Northern extension cancelled and restructured, but Phase 1 civil engineering and
+              core corridor construction remain funded and underway.</p>
+            <div class="sample-footer">
+              <span>Score: 52/100 &middot; 4 wire citations &middot; Case #2026-0812</span>
+              <a class="sample-cta" href="verify.html?case=high-speed-rail">Inspect in workspace &rarr;</a>
+            </div>
+          </div>
+
+          
+          <div class="sample-item" role="listitem">
+            <div class="sample-tag-row">
+              <span class="verdict-pill pill-muted">Insufficient Evidence</span>
+              <span class="sample-category">Energy Policy &middot; Viral Rumor</span>
+            </div>
+            <h3 class="sample-claim-text">Secret emergency directive mandates rolling 4-hour residential power blackouts
+              nationwide starting next week</h3>
+            <p class="sample-context">No corroborating ministerial notices, utility gazettes, or accredited news reports
+              found; neutral baseline score maintained.</p>
+            <div class="sample-footer">
+              <span>Score: 50/100 &middot; 0 wire citations &middot; Case #2026-0924</span>
+              <a class="sample-cta" href="verify.html?case=power-mandate">Inspect in workspace &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 24px;">
+          <a class="preview-cta" href="samples.html">View all detailed demonstration case studies &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section-landing" aria-labelledby="transparency-heading">
+      <div class="container container-narrow">
+        <div class="section-header-centered">
+          <h2 id="transparency-heading" class="section-headline">Evidence transparency standards</h2>
+          <p class="section-desc">Trust is built by showing the underlying evidence, not by asserting authority.</p>
+        </div>
+        <div class="transparency-grid">
+          <div class="transparency-card">
+            <h3>Traceable Wire Citations</h3>
+            <p>Every finding references verifiable source URLs from accredited news wires and fact-checking
+              organizations, enabling users to verify findings independently.</p>
+          </div>
+          <div class="transparency-card">
+            <h3>Explicit Counter-Evidence &amp; Gaps</h3>
+            <p>We do not bury contradictory information. If reputable sources disagree or insufficient evidence is
+              located, both aspects are presented prominently.</p>
+          </div>
+          <div class="transparency-card">
+            <h3>Auditable Local Session Ledger</h3>
+            <p>Checked claims are logged locally in your browser's localStorage. Analysis requests are processed on the
+              VeritasLens server and never sold or shared.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section-landing" style="border-bottom: none;">
+      <div class="container container-narrow">
+        <div class="cta-box">
+          <h2>Have a news story or claim to investigate?</h2>
+          <p>Paste any URL or headline into the verification workbench to inspect atomic claims, documented wire
+            evidence, and mathematical consensus.</p>
+          <a class="btn btn-primary btn-lg" href="verify.html">Open Verification Workspace</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-layout">
+        
+        <div class="footer-col-brand">
+          <a class="footer-brand-link" href="index.html" aria-label="VeritasLens Home">
+            <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <path d="m8 11 2 2 4-4"></path>
+            </svg>
+            <span class="brand-title">Veritas<strong>Lens</strong></span>
+          </a>
+          <p class="footer-mission">
+            An open, evidence-based news and claim verification system. Deconstructs input articles into atomic claims,
+            retrieves live evidence via GNews and Google Fact Check Tools API, and calculates transparent corroboration
+            scores.
+          </p>
+          <div class="footer-badge-wrap">
+            <span class="footer-pill">FastAPI Backend Pipeline</span>
+            <span class="footer-pill">Session Storage Only</span>
+          </div>
+        </div>
+
+        
+        <div class="footer-col-links">
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Platform</h4>
+            <nav class="footer-links-list" aria-label="Footer Platform Links">
+              <a href="index.html">Home</a>
+              <a href="verify.html">Verify Workspace</a>
+              <a href="samples.html">Sample Cases</a>
+              <a href="ledger.html">Session Ledger</a>
+            </nav>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Standards &amp; Process</h4>
+            <nav class="footer-links-list" aria-label="Footer Standards Links">
+              <a href="how-it-works.html">How It Works</a>
+              <a href="methodology.html">Methodology</a>
+              <a href="methodology.html#verdicts">Verification Verdicts</a>
+              <a href="methodology.html#limitations">Evidentiary Limitations</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 VeritasLens Project &middot; Evidence-based news verification.</p>
+        <p class="footer-compliance">Automated claim corroboration. Always cross-reference with official publications
+          and primary sources.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script>
+    (function () {
+      'use strict';
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const loader = document.getElementById('page-loader');
+      const loaderBar = document.getElementById('loader-bar');
+      let loaderDismissed = false;
+
+      function dismissLoader() {
+        if (loaderDismissed) return;
+        loaderDismissed = true;
+        if (loader) {
+          loader.classList.add('is-loaded');
+          loader.setAttribute('aria-hidden', 'true');
+        }
+        initEntranceAnimations();
+      }
+
+      if (prefersReducedMotion) {
+        if (loader) loader.classList.add('is-loaded');
+        initEntranceAnimations();
+      } else {
+        if (loaderBar) {
+          loaderBar.style.transform = 'scaleX(0.4)';
+          setTimeout(function () {
+            if (loaderBar) loaderBar.style.transform = 'scaleX(0.85)';
+          }, 150);
+          setTimeout(function () {
+            if (loaderBar) loaderBar.style.transform = 'scaleX(1)';
+          }, 320);
+        }
+        setTimeout(dismissLoader, 480);
+      }
+
+      setTimeout(dismissLoader, 950);
+
+      const progressBar = document.getElementById('scroll-progress');
+      const header = document.getElementById('site-header');
+      const heroImg = document.getElementById('hero-img');
+
+      let ticking = false;
+
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (progressBar && docHeight > 0) {
+              const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
+              progressBar.style.transform = 'scaleX(' + progress + ')';
+            }
+
+            if (header) {
+              if (scrollY > 16) {
+                header.classList.add('is-scrolled');
+              } else {
+                header.classList.remove('is-scrolled');
+              }
+            }
+
+            if (heroImg && !prefersReducedMotion && window.innerWidth > 780) {
+              if (scrollY < 850) {
+                heroImg.style.transform = 'translate3d(0, ' + (scrollY * 0.16) + 'px, 0) scale(1.03)';
+              }
+            }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const menuToggle = document.getElementById('menu-toggle');
+      const primaryNav = document.getElementById('primary-nav');
+
+      if (menuToggle && primaryNav) {
+        menuToggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isOpen = primaryNav.classList.toggle('is-open');
+          menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        const navLinks = primaryNav.querySelectorAll('.nav-anchor');
+        navLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            primaryNav.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!primaryNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            primaryNav.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && primaryNav.classList.contains('is-open')) {
+            primaryNav.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.focus();
+          }
+        });
+      }
+
+      function initEntranceAnimations() {
+        if (prefersReducedMotion) return;
+
+        if (typeof window.gsap !== 'undefined') {
+          if (typeof window.ScrollTrigger !== 'undefined') {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+          }
+
+          const heroTl = window.gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+          heroTl.fromTo('.hero-pill-badge',
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.6 }
+          )
+            .fromTo('.hero-stitch-headline',
+              { opacity: 0, y: 22 },
+              { opacity: 1, y: 0, duration: 0.75 },
+              '-=0.4'
+            )
+            .fromTo('.hero-stitch-subhead',
+              { opacity: 0, y: 18 },
+              { opacity: 1, y: 0, duration: 0.65 },
+              '-=0.5'
+            )
+            .fromTo('.hero-stitch-actions .btn-pill',
+              { opacity: 0, y: 14 },
+              { opacity: 1, y: 0, duration: 0.55, stagger: 0.1 },
+              '-=0.45'
+            )
+            .fromTo('.hero-stitch-stats .hero-stat-item',
+              { opacity: 0, y: 10 },
+              { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+              '-=0.35'
+            );
+
+          if (typeof window.ScrollTrigger !== 'undefined') {
+            window.gsap.fromTo('.preview-card',
+              { opacity: 0, y: 32 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.hero-preview-section',
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+
+            window.gsap.fromTo('.about-col-left',
+              { opacity: 0, y: 24 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.about-stitch-section',
+                  start: 'top 78%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+
+            window.gsap.fromTo('.about-col-right > *',
+              { opacity: 0, y: 20 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.12,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.about-stitch-section',
+                  start: 'top 78%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+
+            window.gsap.fromTo('.step-card',
+              { opacity: 0, y: 28 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.65,
+                stagger: 0.14,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.steps-grid',
+                  start: 'top 82%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+
+            const stepCards = document.querySelectorAll('.step-card');
+            stepCards.forEach(function (card) {
+              window.ScrollTrigger.create({
+                trigger: card,
+                start: 'top 70%',
+                end: 'bottom 40%',
+                toggleClass: { targets: card, className: 'is-active-step' }
+              });
+            });
+
+            window.gsap.fromTo('.sample-item',
+              { opacity: 0, y: 22 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.12,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.samples-list',
+                  start: 'top 82%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+
+            window.gsap.fromTo('.transparency-card',
+              { opacity: 0, y: 24 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.65,
+                stagger: 0.12,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.transparency-grid',
+                  start: 'top 82%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+
+            window.gsap.fromTo('.cta-box',
+              { opacity: 0, y: 26 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.75,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: '.cta-box',
+                  start: 'top 84%',
+                  toggleActions: 'play none none none'
+                }
+              }
+            );
+          }
+        }
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7F5F0">
+  <meta name="description"
+    content="VeritasLens Sample Cases — Case studies illustrating automated claim deconstruction, wire evidence retrieval, and 0–100 credibility scoring across 4 standardized verdicts.">
+  <title>Sample Cases — VeritasLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <div class="header-brand">
+        <a class="brand-link" href="index.html" aria-label="VeritasLens Home">
+          <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <path d="m8 11 2 2 4-4"></path>
+          </svg>
+          <span class="brand-title">Veritas<strong>Lens</strong></span>
+        </a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-tagline">Open news verification and evidence-based fact-checking</span>
+      </div>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Main Navigation">
+        <a class="nav-anchor" href="index.html">Home</a>
+        <a class="nav-anchor" href="verify.html">Verify</a>
+        <a class="nav-anchor" href="how-it-works.html">How It Works</a>
+        <a class="nav-anchor is-active" href="samples.html" aria-current="page">Sample Cases</a>
+        <a class="nav-anchor" href="ledger.html">Ledger</a>
+        <a class="nav-anchor" href="methodology.html">Methodology</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <section class="page-header-block" aria-labelledby="page-title">
+      <div class="container container-narrow">
+        <h1 id="page-title" class="page-headline">Sample investigative cases</h1>
+        <p class="page-subhead">
+          Detailed demonstrations illustrating how VeritasLens audits claims across the four standardized verification
+          outcomes: <strong>Contradicted</strong>, <strong>Supported</strong>, <strong>Mixed</strong>, and
+          <strong>Insufficient Evidence</strong>.
+        </p>
+      </div>
+    </section>
+
+    
+    <section class="section-landing">
+      <div class="container container-narrow">
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+
+          
+          <article class="verification-report" style="margin-top: 0;">
+            <header class="report-header">
+              <div class="report-meta">
+                <span class="report-id">CASE-2026-0618</span>
+                <span class="meta-dot">&middot;</span>
+                <span class="sample-category">Economics &middot; Metric Exaggeration</span>
+              </div>
+              <span class="verdict-status-badge verdict-contradicted">CONTRADICTED</span>
+            </header>
+            <div class="report-claim-box">
+              <span class="box-label">Statement Evaluated:</span>
+              <blockquote class="evaluated-quote">“Viral infographic claims Central Bank confirmed a 35% single-month
+                headline inflation surge”</blockquote>
+            </div>
+            <div class="report-summary-block">
+              <h2 class="summary-heading">Investigative findings &amp; score: 18 / 100</h2>
+              <p class="summary-body">
+                Official statistical releases reported monthly CPI at 3.2% annualized. The viral graphic isolated a
+                volatile wholesale spot gas sub-index and falsely presented it as aggregate headline consumer inflation.
+              </p>
+            </div>
+            <div class="evidence-grid">
+              <section class="evidence-section">
+                <h3 class="section-subheading">Atomic claim status</h3>
+                <ul class="claim-list">
+                  <li class="claim-item">
+                    <div class="claim-item-top">
+                      <span class="claim-id">CLM-01</span>
+                      <span class="claim-status-badge verdict-contradicted">Contradicted</span>
+                    </div>
+                    <p class="claim-text">Central Bank confirmed headline consumer inflation surged by 35% in a single
+                      month.</p>
+                    <p class="claim-finding">National Statistics Bureau reports aggregate headline CPI at 0.3%
+                      month-on-month and 3.2% annualized.</p>
+                  </li>
+                </ul>
+              </section>
+              <section class="evidence-section">
+                <h3 class="section-subheading">Primary sources cited</h3>
+                <div class="sources-list">
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">National Statistics Bureau Bulletin</span>
+                      <span class="evidence-tier">Official National Statistics</span>
+                    </div>
+                    <p class="evidence-finding">Official Statistical Gazette confirmed monthly headline CPI stood at
+                      0.3% and 3.2% YoY.</p>
+                    <a class="evidence-safe-link" href="https://www.bls.gov/cpi/" target="_blank"
+                      rel="noopener noreferrer">Statistical Release #CPI-2026-M4 &rarr;</a>
+                  </div>
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">Reuters Financial Wire</span>
+                      <span class="evidence-tier">Accredited Financial News</span>
+                    </div>
+                    <p class="evidence-finding">Analysis disproving social media graphic cherry-picking spot wholesale
+                      commodities.</p>
+                    <a class="evidence-safe-link" href="https://www.reuters.com" target="_blank"
+                      rel="noopener noreferrer">Reuters Ref #RT-ECON-0442 &rarr;</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <footer class="report-footer">
+              <div class="footer-buttons">
+                <a class="btn btn-primary btn-sm" href="verify.html?case=inflation-metric">Load into workspace
+                  &rarr;</a>
+              </div>
+            </footer>
+          </article>
+
+          
+          <article class="verification-report" style="margin-top: 0;">
+            <header class="report-header">
+              <div class="report-meta">
+                <span class="report-id">CASE-2026-0744</span>
+                <span class="meta-dot">&middot;</span>
+                <span class="sample-category">Health &amp; Medicine &middot; Regulatory Records</span>
+              </div>
+              <span class="verdict-status-badge verdict-supported">SUPPORTED</span>
+            </header>
+            <div class="report-claim-box">
+              <span class="box-label">Statement Evaluated:</span>
+              <blockquote class="evaluated-quote">“European Medicines Agency authorizes next-generation antibiotic for
+                critical hospital care”</blockquote>
+            </div>
+            <div class="report-summary-block">
+              <h2 class="summary-heading">Investigative findings &amp; score: 92 / 100</h2>
+              <p class="summary-body">
+                The marketing authorization recommendation is verified directly through European Medicines Agency CHMP
+                committee records and authoritative clinical reporting. Phase III multi-center trials demonstrated
+                statistical efficacy.
+              </p>
+            </div>
+            <div class="evidence-grid">
+              <section class="evidence-section">
+                <h3 class="section-subheading">Atomic claim status</h3>
+                <ul class="claim-list">
+                  <li class="claim-item">
+                    <div class="claim-item-top">
+                      <span class="claim-id">CLM-01</span>
+                      <span class="claim-status-badge verdict-supported">Supported</span>
+                    </div>
+                    <p class="claim-text">EMA committee recommended marketing authorization for novel antimicrobial
+                      candidate.</p>
+                    <p class="claim-finding">CHMP monthly meeting highlights confirm positive opinion under procedure
+                      EMEA/H/C/005821.</p>
+                  </li>
+                  <li class="claim-item">
+                    <div class="claim-item-top">
+                      <span class="claim-id">CLM-02</span>
+                      <span class="claim-status-badge verdict-supported">Supported</span>
+                    </div>
+                    <p class="claim-text">Therapy demonstrated statistical efficacy against resistant bacterial hospital
+                      pathogens.</p>
+                    <p class="claim-finding">Independent trials published in reputable journals confirm primary safety
+                      and efficacy benchmarks.</p>
+                  </li>
+                </ul>
+              </section>
+              <section class="evidence-section">
+                <h3 class="section-subheading">Primary sources cited</h3>
+                <div class="sources-list">
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">EMA Regulatory Public Register</span>
+                      <span class="evidence-tier">Official Statutory Register</span>
+                    </div>
+                    <p class="evidence-finding">Authorized marketing approval indexed under official procedure
+                      EMEA/H/C/005821.</p>
+                    <a class="evidence-safe-link" href="https://www.ema.europa.eu" target="_blank"
+                      rel="noopener noreferrer">EPAR Register Procedure #005821 &rarr;</a>
+                  </div>
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">BMJ Clinical Review</span>
+                      <span class="evidence-tier">Peer-Reviewed Journal</span>
+                    </div>
+                    <p class="evidence-finding">Comprehensive clinical evaluation supporting treatment guidelines for
+                      resistant strains.</p>
+                    <a class="evidence-safe-link" href="https://www.bmj.com" target="_blank"
+                      rel="noopener noreferrer">BMJ Clinical Ref #BMJ-2026-MED &rarr;</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <footer class="report-footer">
+              <div class="footer-buttons">
+                <a class="btn btn-primary btn-sm" href="verify.html?case=antimicrobial-approval">Load into workspace
+                  &rarr;</a>
+              </div>
+            </footer>
+          </article>
+
+          
+          <article class="verification-report" style="margin-top: 0;">
+            <header class="report-header">
+              <div class="report-meta">
+                <span class="report-id">CASE-2026-0812</span>
+                <span class="meta-dot">&middot;</span>
+                <span class="sample-category">Infrastructure &middot; Capital Funding</span>
+              </div>
+              <span class="verdict-status-badge verdict-mixed">MIXED</span>
+            </header>
+            <div class="report-claim-box">
+              <span class="box-label">Statement Evaluated:</span>
+              <blockquote class="evaluated-quote">“Government fully cancels the high-speed rail line project due to
+                budget overruns”</blockquote>
+            </div>
+            <div class="report-summary-block">
+              <h2 class="summary-heading">Investigative findings &amp; score: 52 / 100</h2>
+              <p class="summary-body">
+                The headline oversimplifies policy decisions. While the northern extension was cancelled and
+                restructured, Phase 1 civil engineering and core corridor construction remain fully funded and under
+                active construction.
+              </p>
+            </div>
+            <div class="evidence-grid">
+              <section class="evidence-section">
+                <h3 class="section-subheading">Atomic claim status</h3>
+                <ul class="claim-list">
+                  <li class="claim-item">
+                    <div class="claim-item-top">
+                      <span class="claim-id">CLM-01</span>
+                      <span class="claim-status-badge verdict-supported">Supported</span>
+                    </div>
+                    <p class="claim-text">Government cancelled northern railway segments due to severe budget overruns.
+                    </p>
+                    <p class="claim-finding">Department for Transport confirmed cancellation of secondary phases to cap
+                      expenditure.</p>
+                  </li>
+                  <li class="claim-item">
+                    <div class="claim-item-top">
+                      <span class="claim-id">CLM-02</span>
+                      <span class="claim-status-badge verdict-contradicted">Contradicted</span>
+                    </div>
+                    <p class="claim-text">The entire high-speed rail project has been terminated.</p>
+                    <p class="claim-finding">Primary line works and tunneling operations between major terminals remain
+                      actively underway.</p>
+                  </li>
+                </ul>
+              </section>
+              <section class="evidence-section">
+                <h3 class="section-subheading">Primary sources cited</h3>
+                <div class="sources-list">
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">Department for Transport Ministerial Statement</span>
+                      <span class="evidence-tier">Official Government Gazette</span>
+                    </div>
+                    <p class="evidence-finding">Policy statement detailing restructuring of high-speed rail expenditure
+                      program.</p>
+                    <a class="evidence-safe-link" href="https://www.gov.uk" target="_blank"
+                      rel="noopener noreferrer">Government Gazette #DF-2026-RAIL &rarr;</a>
+                  </div>
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">BBC Transport Correspondent Wire</span>
+                      <span class="evidence-tier">Accredited Broadcaster</span>
+                    </div>
+                    <p class="evidence-finding">Detailed breakdown of ongoing core tunneling vs cancelled regional
+                      extensions.</p>
+                    <a class="evidence-safe-link" href="https://www.bbc.com" target="_blank"
+                      rel="noopener noreferrer">BBC Analysis #BBC-TRN-7721 &rarr;</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <footer class="report-footer">
+              <div class="footer-buttons">
+                <a class="btn btn-primary btn-sm" href="verify.html?case=high-speed-rail">Load into workspace &rarr;</a>
+              </div>
+            </footer>
+          </article>
+
+          
+          <article class="verification-report" style="margin-top: 0;">
+            <header class="report-header">
+              <div class="report-meta">
+                <span class="report-id">CASE-2026-0924</span>
+                <span class="meta-dot">&middot;</span>
+                <span class="sample-category">Energy Policy &middot; Viral Rumor</span>
+              </div>
+              <span class="verdict-status-badge verdict-insufficient">INSUFFICIENT EVIDENCE</span>
+            </header>
+            <div class="report-claim-box">
+              <span class="box-label">Statement Evaluated:</span>
+              <blockquote class="evaluated-quote">“Secret emergency directive mandates rolling 4-hour residential power
+                blackouts nationwide starting next week”</blockquote>
+            </div>
+            <div class="report-summary-block">
+              <h2 class="summary-heading">Investigative findings &amp; score: 50 / 100</h2>
+              <p class="summary-body">
+                No matching ministerial gazettes, grid operator notices, or reports from accredited news wire services
+                corroborate the claim. The system preserves a neutral baseline score of 50.0 rather than asserting
+                refutation without positive disproof.
+              </p>
+            </div>
+            <div class="evidence-grid">
+              <section class="evidence-section">
+                <h3 class="section-subheading">Atomic claim status</h3>
+                <ul class="claim-list">
+                  <li class="claim-item">
+                    <div class="claim-item-top">
+                      <span class="claim-id">CLM-01</span>
+                      <span class="claim-status-badge verdict-insufficient">Insufficient Evidence</span>
+                    </div>
+                    <p class="claim-text">Secret government directive mandates nationwide 4-hour rolling blackouts.</p>
+                    <p class="claim-finding">No official announcements, regulator filings, or wire reporting located to
+                      corroborate the rumor.</p>
+                  </li>
+                </ul>
+              </section>
+              <section class="evidence-section">
+                <h3 class="section-subheading">Primary sources cited</h3>
+                <div class="sources-list">
+                  <div class="evidence-card">
+                    <div class="evidence-header">
+                      <span class="evidence-source">National Grid Capacity Dispatch</span>
+                      <span class="evidence-tier">Official Utility Monitor</span>
+                    </div>
+                    <p class="evidence-finding">Standard generation capacity margins reported normal across transmission
+                      network.</p>
+                    <a class="evidence-safe-link" href="https://www.nationalgrid.com" target="_blank"
+                      rel="noopener noreferrer">Grid Status Bulletin #NGRID-2026 &rarr;</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <footer class="report-footer">
+              <div class="footer-buttons">
+                <a class="btn btn-primary btn-sm" href="verify.html?case=power-mandate">Load into workspace &rarr;</a>
+              </div>
+            </footer>
+          </article>
+
+        </div>
+
+        <div class="cta-box" style="margin-top: 48px;">
+          <h2>Have an unverified claim to inspect?</h2>
+          <p>Test any claim, quote, or article URL in the VeritasLens verification workspace.</p>
+          <a class="btn btn-primary btn-lg" href="verify.html">Open Verification Workspace</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-layout">
+        
+        <div class="footer-col-brand">
+          <a class="footer-brand-link" href="index.html" aria-label="VeritasLens Home">
+            <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <path d="m8 11 2 2 4-4"></path>
+            </svg>
+            <span class="brand-title">Veritas<strong>Lens</strong></span>
+          </a>
+          <p class="footer-mission">
+            An open, evidence-based news and claim verification system. Deconstructs input articles into atomic claims,
+            retrieves live evidence via GNews and Google Fact Check Tools API, and calculates transparent corroboration
+            scores.
+          </p>
+          <div class="footer-badge-wrap">
+            <span class="footer-pill">FastAPI Backend Pipeline</span>
+            <span class="footer-pill">Session Storage Only</span>
+          </div>
+        </div>
+
+        
+        <div class="footer-col-links">
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Platform</h4>
+            <nav class="footer-links-list" aria-label="Footer Platform Links">
+              <a href="index.html">Home</a>
+              <a href="verify.html">Verify Workspace</a>
+              <a href="samples.html">Sample Cases</a>
+              <a href="ledger.html">Session Ledger</a>
+            </nav>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Standards &amp; Process</h4>
+            <nav class="footer-links-list" aria-label="Footer Standards Links">
+              <a href="how-it-works.html">How It Works</a>
+              <a href="methodology.html">Methodology</a>
+              <a href="methodology.html#verdicts">Verification Verdicts</a>
+              <a href="methodology.html#limitations">Evidentiary Limitations</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 VeritasLens Project &middot; Evidence-based news verification.</p>
+        <p class="footer-compliance">Automated claim corroboration. Always cross-reference with official publications
+          and primary sources.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

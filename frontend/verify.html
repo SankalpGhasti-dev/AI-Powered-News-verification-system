@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7F5F0">
+  <meta name="description"
+    content="VeritasLens — AI-powered news verification workspace. Deconstructs articles into atomic claims, gathers corroborating wire coverage via GNews and Google Fact Check, and computes transparent evidence scores.">
+  <title>VeritasLens — News Verification Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <div class="header-brand">
+        <a class="brand-link" href="index.html" aria-label="VeritasLens Home">
+          <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <path d="m8 11 2 2 4-4"></path>
+          </svg>
+          <span class="brand-title">Veritas<strong>Lens</strong></span>
+        </a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-tagline">Open news verification and evidence-based fact-checking</span>
+      </div>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Main Navigation">
+        <a class="nav-anchor" href="index.html">Home</a>
+        <a class="nav-anchor is-active" href="verify.html" aria-current="page">Verify</a>
+        <a class="nav-anchor" href="how-it-works.html">How It Works</a>
+        <a class="nav-anchor" href="samples.html">Sample Cases</a>
+        <a class="nav-anchor" href="ledger.html">Ledger</a>
+        <a class="nav-anchor" href="methodology.html">Methodology</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <section class="workspace-section" id="workspace" aria-labelledby="verify-heading">
+      <div class="container container-narrow">
+        <div class="workspace-intro">
+          <h1 id="verify-heading" class="page-headline">Verify a news story or claim</h1>
+          <p class="page-subhead">
+            Enter a news article URL or paste statement text (at least 15 characters) to decompose claims, retrieve
+            corroborating wire evidence, and calculate transparent credibility metrics.
+          </p>
+        </div>
+
+        
+        <form class="verification-form" id="verify-form" novalidate>
+          <div class="form-field-group">
+            <div class="field-header">
+              <label class="field-label" for="news">Article URL or claim text</label>
+              <span class="char-count" id="char-count">0 / 5,000</span>
+            </div>
+            <textarea id="news" name="news" maxlength="5000" rows="5"
+              placeholder="Enter a full URL (e.g. https://www.bbc.com/news/article-123) or paste statement text (e.g. “A viral post claims that the Central Bank confirmed a 35% single-month surge in headline inflation.”)"
+              required aria-describedby="input-hint input-error"></textarea>
+
+            <div class="field-meta-row">
+              <span id="input-hint" class="input-helper">Accepts full HTTP/HTTPS article URLs or pasted claim text
+                (15–5,000 characters). You can also click any sample case below.</span>
+            </div>
+            <p class="error-banner" id="input-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="form-actions-row">
+            <div class="action-buttons-group">
+              <button class="btn btn-primary" id="analyze-button" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span>Analyze &amp; Verify</span>
+              </button>
+              <button class="btn btn-secondary" id="clear-button" type="reset">Clear text</button>
+            </div>
+            <p class="form-disclaimer">
+              Processed via FastAPI backend with SSRF protection. Claims are cross-referenced with GNews and Google Fact
+              Check Tools API.
+            </p>
+          </div>
+        </form>
+
+        
+        <div class="status-box status-loading" id="loading" role="status" aria-live="polite" hidden>
+          <div class="loading-indicator"></div>
+          <div class="loading-copy">
+            <strong>Running verification pipeline...</strong>
+            <span>Extracting atomic claims via Gemini, querying GNews &amp; Fact Check API, and computing credibility
+              scores.</span>
+          </div>
+        </div>
+
+        
+        <article class="verification-report" id="result" aria-live="polite" aria-atomic="true" hidden>
+          
+          <header class="report-header">
+            <div class="report-meta">
+              <span class="report-id" id="case-id">CASE-2026-0001</span>
+              <span class="meta-dot">&middot;</span>
+              <span class="report-date">Recorded <time id="analysis-time"></time></span>
+            </div>
+            <div class="report-verdict-tag" id="verdict-banner">
+              <span class="verdict-status-badge" id="verdict">Contradicted</span>
+            </div>
+          </header>
+
+          
+          <div class="report-claim-box">
+            <span class="box-label">Statement evaluated:</span>
+            <blockquote class="evaluated-quote" id="evaluated-claim">“Headline statement evaluated by the pipeline”
+            </blockquote>
+          </div>
+
+          <div class="report-summary-block">
+            <h2 class="summary-heading">Investigation findings &amp; synthesis</h2>
+            <div class="summary-body" id="explanation"></div>
+          </div>
+
+          
+          <div class="consensus-row">
+            <div class="consensus-label">
+              <span class="consensus-title">Corroboration Score</span>
+              <span class="consensus-desc" id="corroboration-benchmark">Formula: 50 + (VerdictBalance × 45 ×
+                CoverageFactor)</span>
+            </div>
+            <div class="consensus-badge">
+              <span class="consensus-score" id="confidence-value">50 / 100</span>
+              <div class="consensus-track">
+                <div class="consensus-fill" id="confidence-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="evidence-grid">
+            
+            <section class="evidence-section" aria-labelledby="claims-breakdown-heading">
+              <h3 id="claims-breakdown-heading" class="section-subheading">Atomic claim breakdown</h3>
+              <ul class="claim-list" id="claim-breakdown"></ul>
+            </section>
+
+            
+            <section class="evidence-section" aria-labelledby="sources-heading">
+              <h3 id="sources-heading" class="section-subheading">Documented evidence &amp; wire sources</h3>
+              <div class="sources-list" id="evidence-list"></div>
+            </section>
+          </div>
+
+          
+          <div class="report-criteria-bar">
+            <div class="criteria-item">
+              <span class="criteria-label">Evidence records</span>
+              <span class="criteria-value" id="signal-tier">0 records</span>
+            </div>
+            <div class="criteria-item">
+              <span class="criteria-label">Engine verdict</span>
+              <span class="criteria-value" id="signal-artifacts">Supported / Contradicted / Mixed / Insufficient</span>
+            </div>
+            <div class="criteria-item">
+              <span class="criteria-label">Evaluation pipeline</span>
+              <span class="criteria-value" id="signal-archive">Gemini 2.5 Flash + GNews + FactCheck</span>
+            </div>
+          </div>
+
+          
+          <footer class="report-footer">
+            <div class="footer-buttons">
+              <button class="btn btn-secondary btn-sm" id="copy-report" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy summary brief</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" id="download-report" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download report (.md)</span>
+              </button>
+              <button class="btn btn-ghost btn-sm" id="another-analysis" type="button">Check another claim</button>
+            </div>
+            <span class="action-status" id="copy-status" role="status" aria-live="polite"></span>
+          </footer>
+        </article>
+
+        
+        <section class="samples-section" id="samples" aria-labelledby="samples-heading">
+          <div class="samples-header">
+            <h2 id="samples-heading" class="samples-title">Sample investigative test cases</h2>
+            <p class="samples-desc">Click any scenario to see how extracted claims, wire evidence, and verdicts are
+              evaluated by the system:</p>
+          </div>
+
+          <div class="samples-list" role="list">
+            
+            <button class="sample-item" type="button" data-sample="inflation-metric" role="listitem">
+              <div class="sample-tag-row">
+                <span class="verdict-pill pill-red">Contradicted</span>
+                <span class="sample-category">Economics &middot; Metric Exaggeration</span>
+              </div>
+              <h3 class="sample-claim-text">Viral infographic claims Central Bank confirmed a 35% single-month headline
+                inflation surge</h3>
+              <p class="sample-context">Official statistical releases reported monthly CPI at 3.2% annualized;
+                cherry-picked wholesale spot gas sub-index presented falsely as headline inflation.</p>
+              <div class="sample-footer">
+                <span>Score: 18/100 &middot; 4 wire citations &middot; Case #2026-0618</span>
+                <span class="sample-cta">Load case &rarr;</span>
+              </div>
+            </button>
+
+            
+            <button class="sample-item" type="button" data-sample="antimicrobial-approval" role="listitem">
+              <div class="sample-tag-row">
+                <span class="verdict-pill pill-green">Supported</span>
+                <span class="sample-category">Health &amp; Medicine &middot; Regulatory Records</span>
+              </div>
+              <h3 class="sample-claim-text">European Medicines Agency authorizes next-generation antibiotic for critical
+                hospital care</h3>
+              <p class="sample-context">Verified through authoritative wire releases and agency regulatory register
+                filings citing positive Phase III clinical trial evaluations.</p>
+              <div class="sample-footer">
+                <span>Score: 92/100 &middot; 3 wire citations &middot; Case #2026-0744</span>
+                <span class="sample-cta">Load case &rarr;</span>
+              </div>
+            </button>
+
+            
+            <button class="sample-item" type="button" data-sample="high-speed-rail" role="listitem">
+              <div class="sample-tag-row">
+                <span class="verdict-pill pill-amber">Mixed</span>
+                <span class="sample-category">Infrastructure &middot; Capital Funding</span>
+              </div>
+              <h3 class="sample-claim-text">Government fully cancels the high-speed rail line project due to budget
+                overruns</h3>
+              <p class="sample-context">Northern extension cancelled and restructured, but Phase 1 civil engineering and
+                core corridor construction remain funded and underway.</p>
+              <div class="sample-footer">
+                <span>Score: 52/100 &middot; 4 wire citations &middot; Case #2026-0812</span>
+                <span class="sample-cta">Load case &rarr;</span>
+              </div>
+            </button>
+
+            
+            <button class="sample-item" type="button" data-sample="power-mandate" role="listitem">
+              <div class="sample-tag-row">
+                <span class="verdict-pill pill-muted">Insufficient Evidence</span>
+                <span class="sample-category">Energy Policy &middot; Viral Rumor</span>
+              </div>
+              <h3 class="sample-claim-text">Secret emergency directive mandates rolling 4-hour residential power
+                blackouts nationwide starting next week</h3>
+              <p class="sample-context">No corroborating ministerial notices, utility gazettes, or accredited news
+                reports found; neutral baseline score maintained.</p>
+              <div class="sample-footer">
+                <span>Score: 50/100 &middot; 0 wire citations &middot; Case #2026-0924</span>
+                <span class="sample-cta">Load case &rarr;</span>
+              </div>
+            </button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    
+    <section class="ledger-section" id="ledger" aria-labelledby="ledger-heading">
+      <div class="container container-narrow">
+        <div class="ledger-heading-row">
+          <div>
+            <h2 id="ledger-heading" class="section-headline">Session verification ledger</h2>
+            <p class="section-desc">Historical log of investigations conducted during this browser session. Saved
+              locally in your browser's localStorage.</p>
+          </div>
+          <div class="ledger-counters">
+            <span class="counter-badge">Total checked: <strong id="stat-total">0</strong></span>
+            <span class="counter-badge text-green">Supported: <strong id="stat-true">0</strong></span>
+            <span class="counter-badge text-red">Contradicted: <strong id="stat-false">0</strong></span>
+            <span class="counter-badge text-amber">Mixed / Insufficient: <strong id="stat-misleading">0</strong></span>
+          </div>
+        </div>
+
+        <div class="ledger-filter-bar">
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input id="history-search" type="search" placeholder="Filter ledger by claim, source, or ID..."
+              aria-label="Search ledger">
+          </div>
+          <div class="filter-controls">
+            <select id="verdict-filter" aria-label="Filter by verdict">
+              <option value="all">All verdicts</option>
+              <option value="Supported">Supported</option>
+              <option value="Contradicted">Contradicted</option>
+              <option value="Mixed">Mixed</option>
+              <option value="Insufficient Evidence">Insufficient Evidence</option>
+            </select>
+            <button class="btn btn-secondary btn-sm" id="clear-history" type="button">Clear ledger</button>
+          </div>
+        </div>
+
+        <div class="ledger-table-card">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 130px;">Case ID</th>
+                <th scope="col">Statement excerpt</th>
+                <th scope="col" style="width: 200px;">Verdict</th>
+                <th scope="col" style="width: 150px;">Date</th>
+                <th scope="col" style="width: 90px; text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="history-table-body">
+              
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ledger-empty" id="history-empty" hidden>
+          <p><strong>No matching records found.</strong> Try clearing your search filter or checking a new claim above.
+          </p>
+        </div>
+
+        <p class="ledger-privacy-note" id="storage-note">
+          Session history is stored solely in your browser's localStorage. Analysis requests are transmitted directly to
+          the VeritasLens backend server.
+        </p>
+      </div>
+    </section>
+
+    
+    <section class="methodology-section" id="methodology" aria-labelledby="method-heading">
+      <div class="container container-narrow">
+        <div class="methodology-content">
+          <h2 id="method-heading" class="section-headline">Our verification methodology</h2>
+          <p class="methodology-lead">
+            VeritasLens follows four rigorous evidentiary principles: automated atomic claim decomposition, multi-source
+            wire retrieval, mathematical corroboration scoring, and explicit limitation boundaries.
+          </p>
+
+          <div class="principles-grid">
+            <div class="principle-card">
+              <span class="principle-number">1</span>
+              <h3 class="principle-title">Atomic claim decomposition</h3>
+              <p class="principle-desc">Google Gemini decomposes complex articles and viral headlines into falsifiable,
+                testable atomic claims, stripping away subjective hyperbole.</p>
+            </div>
+            <div class="principle-card">
+              <span class="principle-number">2</span>
+              <h3 class="principle-title">Multi-source wire retrieval</h3>
+              <p class="principle-desc">Claims are queried across accredited news wires via GNews and existing
+                fact-check databases via Google Fact Check Tools API.</p>
+            </div>
+            <div class="principle-card">
+              <span class="principle-number">3</span>
+              <h3 class="principle-title">Transparent 0–100 scoring</h3>
+              <p class="principle-desc">Credibility scores reflect evidence balance and coverage. A lack of evidence
+                yields a neutral 50 score rather than an ungrounded refutation.</p>
+            </div>
+            <div class="principle-card">
+              <span class="principle-number">4</span>
+              <h3 class="principle-title">Explicit evidentiary limitations</h3>
+              <p class="principle-desc">Every report details source gaps, paywall exclusions, and retrieval limits,
+                ensuring users know what could and could not be verified.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-layout">
+        
+        <div class="footer-col-brand">
+          <a class="footer-brand-link" href="index.html" aria-label="VeritasLens Home">
+            <svg class="brand-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <path d="m8 11 2 2 4-4"></path>
+            </svg>
+            <span class="brand-title">Veritas<strong>Lens</strong></span>
+          </a>
+          <p class="footer-mission">
+            An open, evidence-based news and claim verification system. Deconstructs input articles into atomic claims,
+            retrieves live evidence via GNews and Google Fact Check Tools API, and calculates transparent corroboration
+            scores.
+          </p>
+          <div class="footer-badge-wrap">
+            <span class="footer-pill">FastAPI Backend Pipeline</span>
+            <span class="footer-pill">Session Storage Only</span>
+          </div>
+        </div>
+
+        
+        <div class="footer-col-links">
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Platform</h4>
+            <nav class="footer-links-list" aria-label="Footer Platform Links">
+              <a href="index.html">Home</a>
+              <a href="verify.html">Verify Workspace</a>
+              <a href="samples.html">Sample Cases</a>
+              <a href="ledger.html">Session Ledger</a>
+            </nav>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 class="footer-group-heading">Standards &amp; Process</h4>
+            <nav class="footer-links-list" aria-label="Footer Standards Links">
+              <a href="how-it-works.html">How It Works</a>
+              <a href="methodology.html">Methodology</a>
+              <a href="methodology.html#verdicts">Verification Verdicts</a>
+              <a href="methodology.html#limitations">Evidentiary Limitations</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 VeritasLens Project &middot; Evidence-based news verification.</p>
+        <p class="footer-compliance">Automated claim corroboration. Always cross-reference with official publications
+          and primary sources.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
