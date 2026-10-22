@@ -188,4 +188,3 @@ All 34 test cases test SSRF defense, article scraping, claim extraction, evidenc
 - **SSRF Defense**: Validates and restricts URL schemes, denies access to loopback (`127.0.0.1`), link-local, private RFC 1918 networks, and cloud instance metadata endpoints (`169.254.169.254`).
 - **Grounded Verification**: The system is designed to report "Insufficient Evidence" when verified facts cannot be located, rather than speculating.
 - **Auditable Ledger**: Every analysis is preserved with timestamp, claim breakdown, and source attribution for review.
->>>>>>> 1480b95 (Refactor project structure into clean frontend and backend modules, add comprehensive documentation)
